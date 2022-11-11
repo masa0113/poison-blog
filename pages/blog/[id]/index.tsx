@@ -1,6 +1,11 @@
 import { client } from '../../../api/client';
+import { List, ListItem } from '../../../types/List';
 
-export default function BlogId({ data }) {
+interface Props {
+    data: ListItem
+}
+
+const BlogId: React.FC<Props> = ({ data }) => {
     return (
         <div>
             <h1>{data.title}</h1>
@@ -10,14 +15,14 @@ export default function BlogId({ data }) {
 }
 
 export const getStaticPaths = async () => {
-    const data = await client.get({ endpoint: "blogs" });
+    const data: List = await client.get({ endpoint: "blogs" });
 
     const paths = data.contents.map((content) => `/blog/${content.id}`);
 
     return { paths, fallback: false };
 };
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async (context: ListItem) => {
     const id = context.params.id
     const data = await client.get({ endpoint: "blogs", contentId: id });
 
@@ -27,3 +32,5 @@ export const getStaticProps = async (context) => {
         },
     };
 };
+
+export default BlogId

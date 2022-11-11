@@ -1,21 +1,18 @@
-import styles from '../styles/Home.module.css'
-import { client } from '.././api/client'
-import Link from 'next/link'
+import { useRouter } from 'next/router';
+import { client } from '../api/client';
+import { List } from '../types/List';
 
-export default function Home({ data }) {
+interface Props {
+  data: List
+}
+
+const BlogTop: React.FC<Props> = ({ data }) => {
+  const router = useRouter()
   return (
-    <div className={styles.container}>
-      <ul>
-        {data.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <p>{blog.title}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div>
+      {data.contents.map(v => (<a onClick={() => router.push(`/blog/${v.id}`)}>{v.title}</a>))}
     </div>
-  )
+  );
 }
 
 export const getStaticProps = async () => {
@@ -23,7 +20,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      data: data.contents,
+      data,
     },
   };
 };
+
+export default BlogTop
