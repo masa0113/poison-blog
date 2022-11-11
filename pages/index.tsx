@@ -10,7 +10,7 @@ const BlogTop: React.FC<Props> = ({ data }) => {
   const router = useRouter()
   return (
     <div>
-      {data.contents.map(v => (<a onClick={() => router.push(`/blog/${v.id}`)}>{v.title}</a>))}
+      {data.contents.map(v => (<a key={v.id} onClick={() => router.push(`/blog/${v.id}`)}>{v.title}</a>))}
     </div>
   );
 }
