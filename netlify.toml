@@ -2,3 +2,6 @@
 [build]
   command = "yarn build && yarn export"
   publish = "out/"
+
+[build.environment]
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
