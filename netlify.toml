@@ -1,6 +1,14 @@
 # netlify.toml
 [[redirects]]
-from = "/projects/blog/5ludkunab"
-to = "/projects/blog/5ludkunab.html"
+from = "/projects/blog/:id"
+to = "/projects/blog/[id].html"
 status = 200
 force = false
+
+[build]
+  publish = ""
+  command = "yarn build"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
