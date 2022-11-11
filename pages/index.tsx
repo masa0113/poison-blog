@@ -1,19 +1,27 @@
-import { useRouter } from 'next/router';
-import { client } from '../api/client';
-import { List } from '../types/List';
+import { client } from "../api/client";
+import { List } from "../types/List";
 
 interface Props {
-  data: List
+  data: List;
 }
 
 const BlogTop: React.FC<Props> = ({ data }) => {
-  const router = useRouter()
   return (
     <div>
-      {data.contents.map(v => (<a key={v.id} onClick={() => router.push(`/blog/${v.id}`)}>{v.title}</a>))}
+      {data.contents.map((v) => (
+        <a
+          key={v.id}
+          style={{
+            cursor: "pointer",
+          }}
+          href={`/blog/${v.id}`}
+        >
+          {v.title}
+        </a>
+      ))}
     </div>
   );
-}
+};
 
 export const getStaticProps = async () => {
   const data = await client.get({ endpoint: "blogs" });
@@ -25,4 +33,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default BlogTop
+export default BlogTop;
