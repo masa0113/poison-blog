@@ -1,0 +1,6 @@
+# netlify.toml
+[[redirects]]
+from = "/projects/blog/:id"
+to = "/projects/blog/[id].html"
+status = 200
+force = false
