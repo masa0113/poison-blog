@@ -1,3 +1,5 @@
+'use client';
+
 import { client } from '@/api/client';
 import { ListItem } from '@/types/List';
 import { FC, use } from 'react';
@@ -10,11 +12,9 @@ async function getData(contentId: string) {
     return await client.get<ListItem>({ endpoint: "blogs", contentId });
 }
 
-
 const BlogId: FC<Props> = ({ params }) => {
     const post = use(getData(params.id));
 
-    if (!post) return <div>not</div>
     return (
         <div>
             <h1>{post.title}</h1>
