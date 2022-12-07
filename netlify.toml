@@ -1,7 +1,7 @@
 # netlify.toml
 [build]
-  command = "next build"
-  publish = ".next"
+  command = "yarn build && yarn export"
+  publish = "out/"
 
 [build.environment]
 NETLIFY_NEXT_PLUGIN_SKIP = "true"
