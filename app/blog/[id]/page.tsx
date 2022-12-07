@@ -1,8 +1,7 @@
-'use client';
-
+import { FC, use } from 'react';
 import { client } from '@/api/client';
 import { ListItem } from '@/types/List';
-import { FC, use } from 'react';
+
 
 type Props = {
     params: { id: string };

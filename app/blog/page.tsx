@@ -1,6 +1,7 @@
+import { FC, use } from "react";
 import { client } from "@/api/client";
 import { List } from "@/types/List";
-import { FC, use } from "react";
+
 
 async function getData() {
     return await client.get<List>({ endpoint: "blogs" });
