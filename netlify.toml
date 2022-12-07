@@ -1,6 +1,6 @@
 # netlify.toml
 [build]
-  command = "next build"
+  command = "yarn build"
   publish = ".next"
 
 [build.environment]
