@@ -7,7 +7,11 @@ interface Props {
 
 const BlogTop: React.FC<Props> = ({ data }) => {
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexDirection: 'column',
+      gap: '24px'
+    }}>
       {data.contents.map((v) => (
         <a
           key={v.id}
