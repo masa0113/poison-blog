@@ -1,17 +1,11 @@
-import { usePost } from '@/hooks/usePost';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { client } from '../../../api/client';
+import { List, ListItem } from '../../../types/List';
 
-const BlogId: React.FC = () => {
-    const router = useRouter()
-    const id = router.query.id && typeof router.query.id === 'string' ? router.query.id : null
-    const { data, getData } = usePost(id)
+interface Props {
+    data: ListItem
+}
 
-    useEffect(() => {
-        getData()
-    }, [router])
-
-    if (!data) return <div />
+const BlogId: React.FC<Props> = ({ data }) => {
     return (
         <div>
             <h1>{data.title}</h1>
@@ -19,5 +13,24 @@ const BlogId: React.FC = () => {
         </div>
     );
 }
+
+export const getStaticPaths = async () => {
+    const data: List = await client.get({ endpoint: "blogs" });
+
+    const paths = data.contents.map((content) => `/blog/${content.id}`);
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps = async (context: ListItem) => {
+    const id = context.params.id
+    const data = await client.get({ endpoint: "blogs", contentId: id });
+
+    return {
+        props: {
+            data,
+        },
+    };
+};
 
 export default BlogId
