@@ -205,10 +205,10 @@
     ufo "^0.8.0"
     unstorage "^0.6.0"
 
-"@netlify/plugin-nextjs@^4.28.4-appdir.0":
-  version "4.28.4-appdir.0"
-  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.28.4-appdir.0.tgz#c9b7e0442eb33fa4be9638b64a23939d4f5b0448"
-  integrity sha512-7uqLVPPTvUMEy8NFT/fU29e2UV1/8K2iQ8x1MMUBI2XGN6oCFVLCrwwFZ5jHHp3Z3mSh8l5ComojzOTHAdY/vQ==
+"@netlify/plugin-nextjs@appdir":
+  version "4.29.3-appdir.0"
+  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.29.3-appdir.0.tgz#e54e682a18e08c9f1a06f7980fb97e6d38ec6923"
+  integrity sha512-oDI3HjknX5bXsH1BDGsbTLbf8V6eRvQRdjHOyErTKPQvFJ6+fFmeY07HYUsHovD940a/YblumK1BRk6Ah7G/dw==
   dependencies:
     "@netlify/esbuild" "0.14.39"
     "@netlify/functions" "^1.3.0"
