@@ -1,3 +1,4 @@
+import { Grid, Image, Link } from "@chakra-ui/react";
 import { client } from "../api/client";
 import { List } from "../types/List";
 
@@ -6,14 +7,12 @@ interface Props {
 }
 
 const BlogTop: React.FC<Props> = ({ data }) => {
+  console.log(data)
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: 'column',
-      gap: '24px'
-    }}>
+    <Grid gridTemplateColumns='1fr 1fr 1fr' gap='16px'>
       {data.contents.map((v) => (
-        <a
+        <Link
+
           key={v.id}
           style={{
             cursor: "pointer",
@@ -21,9 +20,11 @@ const BlogTop: React.FC<Props> = ({ data }) => {
           href={`/blog/${v.id}`}
         >
           {v.title}
-        </a>
+          <Image width='100%' src={v.eyecatch.url} />
+
+        </Link>
       ))}
-    </div>
+    </Grid>
   );
 };
 
