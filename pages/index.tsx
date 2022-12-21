@@ -1,6 +1,6 @@
 import { Grid, Image, Link } from "@chakra-ui/react";
-import { client } from "../api/client";
-import { List } from "../types/List";
+import { client } from "@/api/client";
+import { List } from "@/types/List";
 
 interface Props {
   data: List;

@@ -1,5 +1,5 @@
-import { client } from '../../../api/client';
-import { List, ListItem } from '../../../types/List';
+import { client } from '@/api/client';
+import { List, ListItem } from '@/types/List';
 
 interface Props {
     data: ListItem
